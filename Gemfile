@@ -35,6 +35,7 @@ gem 'simple_form'
 
 # Authentication
 gem 'devise'
+gem 'doorkeeper'
 
 group :development, :test do
   gem 'database_cleaner'
