@@ -20,6 +20,11 @@ Clone project and run following from project directory:
 
 ```bash
 bundle install
-rails db:create
-rails db:migrate
+bundle exec rails db:create
+bundle exec rails db:migrate
+```
+
+Start local server and access app at http://localhost:3000
+```bash
+bundle exec rails server
 ```
