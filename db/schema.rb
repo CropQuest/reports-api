@@ -10,10 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170911221102) do
+ActiveRecord::Schema.define(version: 20170911224548) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "report_type_options", force: :cascade do |t|
+    t.bigint "report_type_id"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["report_type_id"], name: "index_report_type_options_on_report_type_id"
+  end
+
+  create_table "report_types", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "reports", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "report_type_id"
+    t.integer "report_type_option_ids", default: [], array: true
+    t.string "name"
+    t.date "start_date"
+    t.date "end_date"
+    t.text "notes"
+    t.boolean "logo_enabled"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["report_type_id"], name: "index_reports_on_report_type_id"
+    t.index ["user_id"], name: "index_reports_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -32,4 +62,7 @@ ActiveRecord::Schema.define(version: 20170911221102) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "report_type_options", "report_types"
+  add_foreign_key "reports", "report_types"
+  add_foreign_key "reports", "users"
 end

@@ -1,0 +1,23 @@
+%h1 Listing report_types
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Description
+      %th
+      %th
+      %th
+
+  %tbody
+    - @report_types.each do |report_type|
+      %tr
+        %td= report_type.name
+        %td= report_type.description
+        %td= link_to 'Show', report_type
+        %td= link_to 'Edit', edit_report_type_path(report_type)
+        %td= link_to 'Destroy', report_type, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Report type', new_report_type_path

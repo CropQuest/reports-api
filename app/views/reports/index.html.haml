@@ -1,0 +1,35 @@
+%h1 Listing reports
+
+%table
+  %thead
+    %tr
+      %th User
+      %th Report type
+      %th Report type option ids
+      %th Name
+      %th Start date
+      %th End date
+      %th Notes
+      %th Logo enabled
+      %th
+      %th
+      %th
+
+  %tbody
+    - @reports.each do |report|
+      %tr
+        %td= report.user
+        %td= report.report_type
+        %td= report.report_type_option_ids
+        %td= report.name
+        %td= report.start_date
+        %td= report.end_date
+        %td= report.notes
+        %td= report.logo_enabled
+        %td= link_to 'Show', report
+        %td= link_to 'Edit', edit_report_path(report)
+        %td= link_to 'Destroy', report, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Report', new_report_path

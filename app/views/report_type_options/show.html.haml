@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Report type:
+  = @report_type_option.report_type
+%p
+  %b Name:
+  = @report_type_option.name
+
+= link_to 'Edit', edit_report_type_option_path(@report_type_option)
+\|
+= link_to 'Back', report_type_options_path

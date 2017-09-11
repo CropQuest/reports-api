@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  resources :reports
+  resources :report_type_options
+  resources :report_types
   devise_for :users
 
   root to: 'home#index'

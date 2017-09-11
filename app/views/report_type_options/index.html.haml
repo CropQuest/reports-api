@@ -1,0 +1,23 @@
+%h1 Listing report_type_options
+
+%table
+  %thead
+    %tr
+      %th Report type
+      %th Name
+      %th
+      %th
+      %th
+
+  %tbody
+    - @report_type_options.each do |report_type_option|
+      %tr
+        %td= report_type_option.report_type
+        %td= report_type_option.name
+        %td= link_to 'Show', report_type_option
+        %td= link_to 'Edit', edit_report_type_option_path(report_type_option)
+        %td= link_to 'Destroy', report_type_option, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Report type option', new_report_type_option_path
