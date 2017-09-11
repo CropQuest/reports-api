@@ -33,6 +33,9 @@ gem 'jquery-rails'
 gem 'bootstrap', '~> 4.0.0.beta'
 gem 'simple_form'
 
+# Authentication
+gem 'devise'
+
 group :development, :test do
   gem 'database_cleaner'
   gem 'rspec-rails'
