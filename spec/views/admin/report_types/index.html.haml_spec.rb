@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "report_types/index", type: :view do
+RSpec.describe "admin/report_types/index", type: :view do
   before(:each) do
     assign(:report_types, [
       ReportType.create!(

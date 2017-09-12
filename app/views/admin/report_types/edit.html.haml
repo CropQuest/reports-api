@@ -1,7 +1,9 @@
-%h1 Editing report_type
+%div.col-md-12
+  %h2 Edit Report Type
+  %hr
 
-= render 'form'
+  = render 'form'
 
-= link_to 'Show', @report_type
-\|
-= link_to 'Back', report_types_path
+  = link_to 'Show', admin_report_type_path(@report_type)
+  \|
+  = link_to 'Back', admin_report_types_path

@@ -1,23 +1,24 @@
-%h1 Listing report_types
+%div.col-md-12
+  %h2 Report Types
+  %hr
 
-%table
-  %thead
-    %tr
-      %th Name
-      %th Description
-      %th
-      %th
-      %th
-
-  %tbody
-    - @report_types.each do |report_type|
+  %table.table.table-striped
+    %thead.thead-inverse
       %tr
-        %td= report_type.name
-        %td= report_type.description
-        %td= link_to 'Show', report_type
-        %td= link_to 'Edit', edit_report_type_path(report_type)
-        %td= link_to 'Destroy', report_type, method: :delete, data: { confirm: 'Are you sure?' }
+        %th Name
+        %th Description
+        %th
 
-%br
+    %tbody
+      - @report_types.each do |report_type|
+        %tr
+          %td= report_type.name
+          %td= report_type.description
+          %td
+            = link_to 'Show', admin_report_type_path(report_type)
+            = link_to 'Edit', edit_admin_report_type_path(report_type)
+            = link_to 'Destroy', admin_report_type_path(report_type), method: :delete, data: { confirm: 'Are you sure?' }
 
-= link_to 'New Report type', new_report_type_path
+  %br
+
+  = link_to 'New Report type', new_admin_report_type_path

@@ -23,7 +23,7 @@ require 'rails_helper'
 # removed from Rails core in Rails 5, but can be added back in via the
 # `rails-controller-testing` gem.
 
-RSpec.describe ReportTypesController, type: :controller do
+RSpec.describe Admin::ReportTypesController, type: :controller do
 
   # This should return the minimal set of attributes required to create a valid
   # ReportType. As you add validations to ReportType, be sure to

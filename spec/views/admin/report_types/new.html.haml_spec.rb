@@ -1,17 +1,17 @@
 require 'rails_helper'
 
-RSpec.describe "report_types/edit", type: :view do
+RSpec.describe "admin/report_types/new", type: :view do
   before(:each) do
-    @report_type = assign(:report_type, ReportType.create!(
+    assign(:report_type, ReportType.new(
       :name => "MyString",
       :description => "MyText"
     ))
   end
 
-  it "renders the edit report_type form" do
+  it "renders new report_type form" do
     render
 
-    assert_select "form[action=?][method=?]", report_type_path(@report_type), "post" do
+    assert_select "form[action=?][method=?]", admin_report_types_path, "post" do
 
       assert_select "input[name=?]", "report_type[name]"
 
