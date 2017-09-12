@@ -2,14 +2,13 @@
   = f.error_notification
 
   .form-inputs
-    = f.association :user
     = f.association :report_type
-    = f.input :report_type_option_ids
+    = f.input :report_type_option_ids, label: 'Report Type Options'
     = f.input :name
+    = f.input :notes
     = f.input :start_date
     = f.input :end_date
-    = f.input :notes
-    = f.input :logo_enabled
+    = f.input :logo_enabled, label: 'Logo Enabled?'
 
   .form-actions
     = f.button :submit

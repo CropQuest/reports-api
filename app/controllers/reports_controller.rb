@@ -1,9 +1,10 @@
 class ReportsController < ApplicationController
   before_action :set_report, only: [:show, :edit, :update, :destroy]
+  before_action :require_permission, only: [:show, :edit, :update, :destroy]
 
   # GET /reports
   def index
-    @reports = Report.all
+    @reports = current_user.reports
   end
 
   # GET /reports/1
@@ -22,6 +23,7 @@ class ReportsController < ApplicationController
   # POST /reports
   def create
     @report = Report.new(report_params)
+    @report.user_id = current_user.id
 
     if @report.save
       redirect_to @report, notice: 'Report was successfully created.'
@@ -51,8 +53,12 @@ class ReportsController < ApplicationController
       @report = Report.find(params[:id])
     end
 
+    def require_permission
+      redirect_to reports_url unless current_user.id == @report.user_id
+    end
+
     # Only allow a trusted parameter "white list" through.
     def report_params
-      params.require(:report).permit(:user_id, :report_type_id, :report_type_option_ids, :name, :start_date, :end_date, :notes, :logo_enabled)
+      params.require(:report).permit(:report_type_id, :report_type_option_ids, :name, :start_date, :end_date, :notes, :logo_enabled)
     end
 end

@@ -1,30 +1,35 @@
-%p#notice= notice
+%div.col-md-12
+  %h2 Report
+  %hr
 
-%p
-  %b User:
-  = @report.user
-%p
-  %b Report type:
-  = @report.report_type
-%p
-  %b Report type option ids:
-  = @report.report_type_option_ids
-%p
-  %b Name:
-  = @report.name
-%p
-  %b Start date:
-  = @report.start_date
-%p
-  %b End date:
-  = @report.end_date
-%p
-  %b Notes:
-  = @report.notes
-%p
-  %b Logo enabled:
-  = @report.logo_enabled
+  %p
+    %b Report type:
+    = @report.report_type.name
+  %p
+    %b Report Type Options:
+    = @report.report_type_option_ids
+  %p
+    %b Name:
+    = @report.name
+  %p
+    %b Start Date:
+    = @report.start_date
+  %p
+    %b End Date:
+    = @report.end_date
+  %p
+    %b Notes:
+    = @report.notes
+  %p
+    %b Logo Enabled:
+    = @report.logo_enabled
+  %p
+    %b Created At:
+    = @report.created_at
+  %p
+    %b Updated At:
+    = @report.updated_at
 
-= link_to 'Edit', edit_report_path(@report)
-\|
-= link_to 'Back', reports_path
+  = link_to 'Edit', edit_report_path(@report)
+  \|
+  = link_to 'Back', reports_path

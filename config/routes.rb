@@ -12,10 +12,9 @@ Rails.application.routes.draw do
   end
 
   resources :reports
-  
+
   use_doorkeeper
   devise_for :users
 
-  root to: 'home#index'
-  get 'home/index'
+  root to: 'reports#index'
 end
