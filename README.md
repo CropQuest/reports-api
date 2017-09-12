@@ -24,7 +24,15 @@ bundle exec rails db:create
 bundle exec rails db:migrate
 ```
 
-Start local server and access app at http://localhost:3000
+Seed the database with admin user account and initial ReportType and ReportTypeOption records
+
+```bash
+bundle exec rails db:seed
+```
+
+Start local server and access app at http://localhost:3000.
+Log in with admin user credentials set in db/seeds.rb
+
 ```bash
 bundle exec rails server
 ```

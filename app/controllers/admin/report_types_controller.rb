@@ -1,4 +1,5 @@
-class ReportTypesController < ApplicationController
+class Admin::ReportTypesController < ApplicationController
+  before_action :require_report_admin
   before_action :set_report_type, only: [:show, :edit, :update, :destroy]
 
   # GET /report_types

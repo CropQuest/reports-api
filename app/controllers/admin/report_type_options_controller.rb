@@ -1,4 +1,5 @@
-class ReportTypeOptionsController < ApplicationController
+class Admin::ReportTypeOptionsController < ApplicationController
+  before_action :require_report_admin
   before_action :set_report_type_option, only: [:show, :edit, :update, :destroy]
 
   # GET /report_type_options

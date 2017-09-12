@@ -1,9 +1,19 @@
 Rails.application.routes.draw do
 
-  use_doorkeeper
+  namespace :api do
+    namespace :v1, defaults: { format: 'json' } do
+      resources :reports
+    end
+  end
+
+  namespace :admin do
+    resources :report_type_options
+    resources :report_types
+  end
+
   resources :reports
-  resources :report_type_options
-  resources :report_types
+  
+  use_doorkeeper
   devise_for :users
 
   root to: 'home#index'
