@@ -1,4 +1,6 @@
 require 'factory_girl_rails'
+require_relative 'support/controller_helpers'
+require 'devise'
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
@@ -22,5 +24,10 @@ RSpec.configure do |config|
   config.order = :random
   Kernel.srand config.seed
 
-  config.include FactoryGirl::Syntax::Methods
+  config.include ControllerHelpers, type: :controller
+  Warden.test_mode!
+
+  config.after do
+    Warden.test_reset!
+  end
 end

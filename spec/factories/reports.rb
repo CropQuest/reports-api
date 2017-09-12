@@ -1,12 +1,12 @@
 FactoryGirl.define do
   factory :report do
-    user nil
-    report_type nil
-    report_type_option_ids 1
-    name "MyString"
-    start_date "2017-09-11"
-    end_date "2017-09-11"
-    notes "MyText"
-    logo_enabled false
+    user
+    report_type
+    report_type_option_ids [1, 2]
+    name { Faker::Job.title }
+    start_date Faker::Date.between(20.days.ago, 10.days.ago)
+    end_date Faker::Date.between(3.days.ago, Date.today)
+    notes { Faker::Lorem.sentence }
+    logo_enabled { Faker::Boolean.boolean }
   end
 end

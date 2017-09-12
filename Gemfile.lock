@@ -93,6 +93,8 @@ GEM
     factory_girl_rails (4.8.0)
       factory_girl (~> 4.8.0)
       railties (>= 3.0.0)
+    faker (1.8.4)
+      i18n (~> 0.5)
     ffi (1.9.18)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
@@ -262,6 +264,7 @@ DEPENDENCIES
   devise
   doorkeeper
   factory_girl_rails
+  faker
   haml-rails (~> 1.0)
   jquery-rails
   listen (>= 3.0.5, < 3.2)

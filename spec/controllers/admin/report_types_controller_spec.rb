@@ -24,50 +24,39 @@ require 'rails_helper'
 # `rails-controller-testing` gem.
 
 RSpec.describe Admin::ReportTypesController, type: :controller do
+  let(:valid_attributes){ attributes_for(:report_type) }
 
-  # This should return the minimal set of attributes required to create a valid
-  # ReportType. As you add validations to ReportType, be sure to
-  # adjust the attributes here as well.
-  let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
-  }
-
-  let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
-  }
-
-  # This should return the minimal set of values that should be in the session
-  # in order to pass any filters (e.g. authentication) defined in
-  # ReportTypesController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
+  before do
+    login_with create( :admin )
+  end
 
   describe "GET #index" do
     it "returns a success response" do
-      report_type = ReportType.create! valid_attributes
-      get :index, params: {}, session: valid_session
+      report_type = create(:report_type)
+      get :index, params: {}
       expect(response).to be_success
     end
   end
 
   describe "GET #show" do
     it "returns a success response" do
-      report_type = ReportType.create! valid_attributes
-      get :show, params: {id: report_type.to_param}, session: valid_session
+      report_type = create(:report_type)
+      get :show, params: {id: report_type.to_param}
       expect(response).to be_success
     end
   end
 
   describe "GET #new" do
     it "returns a success response" do
-      get :new, params: {}, session: valid_session
+      get :new, params: {}
       expect(response).to be_success
     end
   end
 
   describe "GET #edit" do
     it "returns a success response" do
-      report_type = ReportType.create! valid_attributes
-      get :edit, params: {id: report_type.to_param}, session: valid_session
+      report_type = create(:report_type)
+      get :edit, params: {id: report_type.to_param}
       expect(response).to be_success
     end
   end
@@ -76,19 +65,19 @@ RSpec.describe Admin::ReportTypesController, type: :controller do
     context "with valid params" do
       it "creates a new ReportType" do
         expect {
-          post :create, params: {report_type: valid_attributes}, session: valid_session
+          post :create, params: {report_type: valid_attributes}
         }.to change(ReportType, :count).by(1)
       end
 
       it "redirects to the created report_type" do
-        post :create, params: {report_type: valid_attributes}, session: valid_session
-        expect(response).to redirect_to(ReportType.last)
+        post :create, params: {report_type: valid_attributes}
+        expect(response).to redirect_to(admin_report_type_url(ReportType.last))
       end
     end
 
     context "with invalid params" do
       it "returns a success response (i.e. to display the 'new' template)" do
-        post :create, params: {report_type: invalid_attributes}, session: valid_session
+        post :create, params: {report_type: invalid_attributes}
         expect(response).to be_success
       end
     end
@@ -101,23 +90,23 @@ RSpec.describe Admin::ReportTypesController, type: :controller do
       }
 
       it "updates the requested report_type" do
-        report_type = ReportType.create! valid_attributes
-        put :update, params: {id: report_type.to_param, report_type: new_attributes}, session: valid_session
+        report_type = create(:report_type)
+        put :update, params: {id: report_type.to_param, report_type: new_attributes}
         report_type.reload
         skip("Add assertions for updated state")
       end
 
       it "redirects to the report_type" do
-        report_type = ReportType.create! valid_attributes
-        put :update, params: {id: report_type.to_param, report_type: valid_attributes}, session: valid_session
-        expect(response).to redirect_to(report_type)
+        report_type = create(:report_type)
+        put :update, params: {id: report_type.to_param, report_type: valid_attributes}
+        expect(response).to redirect_to(admin_report_type_url(report_type))
       end
     end
 
     context "with invalid params" do
       it "returns a success response (i.e. to display the 'edit' template)" do
-        report_type = ReportType.create! valid_attributes
-        put :update, params: {id: report_type.to_param, report_type: invalid_attributes}, session: valid_session
+        report_type = create(:report_type)
+        put :update, params: {id: report_type.to_param, report_type: invalid_attributes}
         expect(response).to be_success
       end
     end
@@ -125,16 +114,16 @@ RSpec.describe Admin::ReportTypesController, type: :controller do
 
   describe "DELETE #destroy" do
     it "destroys the requested report_type" do
-      report_type = ReportType.create! valid_attributes
+      report_type = create(:report_type)
       expect {
-        delete :destroy, params: {id: report_type.to_param}, session: valid_session
+        delete :destroy, params: {id: report_type.to_param}
       }.to change(ReportType, :count).by(-1)
     end
 
     it "redirects to the report_types list" do
-      report_type = ReportType.create! valid_attributes
-      delete :destroy, params: {id: report_type.to_param}, session: valid_session
-      expect(response).to redirect_to(report_types_url)
+      report_type = create(:report_type)
+      delete :destroy, params: {id: report_type.to_param}
+      expect(response).to redirect_to(admin_report_types_url)
     end
   end
 

@@ -25,49 +25,39 @@ require 'rails_helper'
 
 RSpec.describe ReportsController, type: :controller do
 
-  # This should return the minimal set of attributes required to create a valid
-  # Report. As you add validations to Report, be sure to
-  # adjust the attributes here as well.
-  let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
-  }
+  let(:valid_attributes){ attributes_for(:report) }
 
-  let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
-  }
-
-  # This should return the minimal set of values that should be in the session
-  # in order to pass any filters (e.g. authentication) defined in
-  # ReportsController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
+  before do
+    login_with create( :user )
+  end
 
   describe "GET #index" do
     it "returns a success response" do
-      report = Report.create! valid_attributes
-      get :index, params: {}, session: valid_session
+      report = create(:report)
+      get :index, params: {}
       expect(response).to be_success
     end
   end
 
   describe "GET #show" do
     it "returns a success response" do
-      report = Report.create! valid_attributes
-      get :show, params: {id: report.to_param}, session: valid_session
+      report = create(:report)
+      get :show, params: {id: report.to_param}
       expect(response).to be_success
     end
   end
 
   describe "GET #new" do
     it "returns a success response" do
-      get :new, params: {}, session: valid_session
+      get :new, params: {}
       expect(response).to be_success
     end
   end
 
   describe "GET #edit" do
     it "returns a success response" do
-      report = Report.create! valid_attributes
-      get :edit, params: {id: report.to_param}, session: valid_session
+      report = create(:report)
+      get :edit, params: {id: report.to_param}
       expect(response).to be_success
     end
   end
@@ -76,19 +66,19 @@ RSpec.describe ReportsController, type: :controller do
     context "with valid params" do
       it "creates a new Report" do
         expect {
-          post :create, params: {report: valid_attributes}, session: valid_session
+          post :create, params: {report: valid_attributes}
         }.to change(Report, :count).by(1)
       end
 
       it "redirects to the created report" do
-        post :create, params: {report: valid_attributes}, session: valid_session
+        post :create, params: {report: valid_attributes}
         expect(response).to redirect_to(Report.last)
       end
     end
 
     context "with invalid params" do
       it "returns a success response (i.e. to display the 'new' template)" do
-        post :create, params: {report: invalid_attributes}, session: valid_session
+        post :create, params: {report: invalid_attributes}
         expect(response).to be_success
       end
     end
@@ -101,23 +91,23 @@ RSpec.describe ReportsController, type: :controller do
       }
 
       it "updates the requested report" do
-        report = Report.create! valid_attributes
-        put :update, params: {id: report.to_param, report: new_attributes}, session: valid_session
+        report = create(:report)
+        put :update, params: {id: report.to_param, report: new_attributes}
         report.reload
         skip("Add assertions for updated state")
       end
 
       it "redirects to the report" do
-        report = Report.create! valid_attributes
-        put :update, params: {id: report.to_param, report: valid_attributes}, session: valid_session
+        report = create(:report)
+        put :update, params: {id: report.to_param, report: valid_attributes}
         expect(response).to redirect_to(report)
       end
     end
 
     context "with invalid params" do
       it "returns a success response (i.e. to display the 'edit' template)" do
-        report = Report.create! valid_attributes
-        put :update, params: {id: report.to_param, report: invalid_attributes}, session: valid_session
+        report = create(:report)
+        put :update, params: {id: report.to_param, report: invalid_attributes}
         expect(response).to be_success
       end
     end
@@ -125,15 +115,15 @@ RSpec.describe ReportsController, type: :controller do
 
   describe "DELETE #destroy" do
     it "destroys the requested report" do
-      report = Report.create! valid_attributes
+      report = create(:report)
       expect {
-        delete :destroy, params: {id: report.to_param}, session: valid_session
+        delete :destroy, params: {id: report.to_param}
       }.to change(Report, :count).by(-1)
     end
 
     it "redirects to the reports list" do
-      report = Report.create! valid_attributes
-      delete :destroy, params: {id: report.to_param}, session: valid_session
+      report = create(:report)
+      delete :destroy, params: {id: report.to_param}
       expect(response).to redirect_to(reports_url)
     end
   end
