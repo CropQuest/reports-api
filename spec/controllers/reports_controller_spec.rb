@@ -26,9 +26,10 @@ require 'rails_helper'
 RSpec.describe ReportsController, type: :controller do
 
   let(:valid_attributes){ attributes_for(:report) }
+  let(:invalid_attributes){ attributes_for(:report, name: nil) }
 
   before do
-    login_with create( :user )
+    sign_in create( :user )
   end
 
   describe "GET #index" do

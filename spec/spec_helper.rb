@@ -1,5 +1,4 @@
 require 'factory_girl_rails'
-require_relative 'support/controller_helpers'
 require 'devise'
 
 RSpec.configure do |config|
@@ -23,11 +22,4 @@ RSpec.configure do |config|
   #config.profile_examples = 10
   config.order = :random
   Kernel.srand config.seed
-
-  config.include ControllerHelpers, type: :controller
-  Warden.test_mode!
-
-  config.after do
-    Warden.test_reset!
-  end
 end

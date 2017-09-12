@@ -24,10 +24,12 @@ require 'rails_helper'
 # `rails-controller-testing` gem.
 
 RSpec.describe Admin::ReportTypesController, type: :controller do
+
   let(:valid_attributes){ attributes_for(:report_type) }
+  let(:invalid_attributes){ attributes_for(:report_type, name: nil) }
 
   before do
-    login_with create( :admin )
+    sign_in create( :admin )
   end
 
   describe "GET #index" do

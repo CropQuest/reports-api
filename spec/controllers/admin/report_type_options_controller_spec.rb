@@ -26,9 +26,10 @@ require 'rails_helper'
 RSpec.describe Admin::ReportTypeOptionsController, type: :controller do
 
   let(:valid_attributes){ attributes_for(:report_type_option) }
+  let(:invalid_attributes){ attributes_for(:report_type_option, name: nil) }
 
   before do
-    login_with create( :admin )
+    sign_in create( :admin )
   end
 
   describe "GET #index" do
