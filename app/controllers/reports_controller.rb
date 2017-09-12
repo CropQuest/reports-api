@@ -1,6 +1,5 @@
 class ReportsController < ApplicationController
   before_action :set_report, only: [:show, :edit, :update, :destroy]
-  before_action :require_permission, only: [:show, :edit, :update, :destroy]
 
   # GET /reports
   def index
@@ -22,8 +21,7 @@ class ReportsController < ApplicationController
 
   # POST /reports
   def create
-    @report = Report.new(report_params)
-    @report.user_id = current_user.id
+    @report = current_user.reports.new(report_params)
 
     if @report.save
       redirect_to @report, notice: 'Report was successfully created.'
@@ -51,10 +49,6 @@ class ReportsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_report
       @report = Report.find(params[:id])
-    end
-
-    def require_permission
-      redirect_to reports_url unless current_user.id == @report.user_id
     end
 
     # Only allow a trusted parameter "white list" through.
