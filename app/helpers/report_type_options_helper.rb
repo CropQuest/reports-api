@@ -1,2 +1,0 @@
-module ReportTypeOptionsHelper
-end
