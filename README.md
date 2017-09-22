@@ -14,7 +14,7 @@ Example of Rails 5 app with API
 * Rails >= 5.1
 * PostgreSQL >= 9.x
 
-## Setup
+## Initial Setup
 Clone project and run following from project directory:
 
 ```bash
@@ -29,9 +29,20 @@ Seed the database with admin user account and initial ReportType and ReportTypeO
 bundle exec rails db:seed
 ```
 
+## General
+
 Start local server and access app at http://localhost:3000.
 Log in with admin user credentials set in db/seeds.rb
 
 ```bash
 bundle exec rails server
 ```
+
+### Testing
+Testing is done with RSpec. To run specs:
+
+```bash
+bundle exec rspec
+```
+
+### API
