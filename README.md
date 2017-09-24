@@ -1,11 +1,16 @@
-# Reports API
+# Reports API App
 
-Example of Rails 5 app with API
+*** Note: this is still a work in progress ***
+
+Rails 5 example app with a documented API. The primary goal is to keep this app up to date with new versions of Ruby on Rails and project dependencies as a reference implementation. The secondary goal is to provide a simple documented API for learning to implement mobile API clients.
 
 ## Overview
-* JSON API with [ActiveModelSerializers](https://github.com/rails-api/active_model_serializers)
 * User authentication with [Devise](https://github.com/plataformatec/devise)
+* JSON API with [ActiveModelSerializers](https://github.com/rails-api/active_model_serializers)
 * API documentation with [Swagger](https://github.com/richhollis/swagger-docs)
+* [RSpec](http://rspec.info/) for testing
+* [Haml](http://haml.info/) for views
+* [Bootstrap 4](https://getbootstrap.com/) CSS Framework
 
 ## Requirements
 * Linux or MacOS (*not tested on Windows*)
