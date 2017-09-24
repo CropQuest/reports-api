@@ -1,4 +1,5 @@
 class ReportTypeOptionSerializer < ActiveModel::Serializer
   attributes :id, :name
-  has_one :report_type
+
+  belongs_to :report_type
 end
