@@ -1,5 +1,7 @@
 %div.col-md-12
-  %h2 Reports
+  .pull-right
+    = link_to raw("#{icon('plus', 'Add')}"), new_report_path, class: "btn btn-primary"
+  %h3 Reports
   %hr
 
   %table.table.table-striped.table-responsive
@@ -24,7 +26,3 @@
             = link_to raw("#{icon('eye')}"), report, class: "btn btn-info"
             = link_to raw("#{icon('pencil')}"), edit_report_path(report), class: "btn btn-warning"
             = link_to raw("#{icon('trash')}"), report, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"
-
-  %br
-
-  = link_to 'New Report', new_report_path

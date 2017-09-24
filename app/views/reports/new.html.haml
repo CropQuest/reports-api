@@ -1,7 +1,7 @@
 %div.col-md-12
-  %h2 New Report
+  .pull-right
+    = link_to raw("#{icon('arrow-left', 'Back')}"), reports_path, class: "btn btn-primary"
+  %h3 New Report
   %hr
 
   = render 'form'
-
-  = link_to 'Back', reports_path

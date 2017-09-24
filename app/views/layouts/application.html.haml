@@ -9,5 +9,6 @@
   %body
     = render 'nav'
     %div.container
+      = flash_messages if show_layout_flash?
       %div.row
         = yield
