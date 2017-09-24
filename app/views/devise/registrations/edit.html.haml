@@ -1,7 +1,9 @@
 %div.col-md-12
-  %h2 Edit #{resource_name.to_s.humanize}
-  %hr
-  
+  .pull-right
+    = link_to raw("#{icon('arrow-left', 'Back')}"), :back, class: "btn btn-secondary"
+  %h3 Edit #{resource_name.to_s.humanize}
+  %br
+
   = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
     = f.error_notification
     .form-inputs
@@ -14,7 +16,8 @@
       = f.input :current_password, hint: "we need your current password to confirm your changes", required: true
     .form-actions
       = f.button :submit, "Update"
+  %br
+  %hr
   %h3 Cancel my account
   %p
     Unhappy? #{link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
-  = link_to "Back", :back

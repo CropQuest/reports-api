@@ -1,34 +1,45 @@
 %div.col-md-12
   .pull-right
     = link_to raw("#{icon('pencil', 'Edit')}"), edit_report_path(@report), class: "btn btn-warning"
-    = link_to raw("#{icon('arrow-left', 'Back')}"), reports_path, class: "btn btn-primary"
+    = link_to raw("#{icon('arrow-left', 'Back')}"), reports_path, class: "btn btn-secondary"
   %h3 Report
-  %hr
+  %br
 
-  %p
-    %b Name:
-    = @report.name
-  %p
-    %b Report type:
-    = @report.report_type.name
-  %p
-    %b Report Type Options:
-    = @report&.report_type_options&.map(&:name).join(', ')
-  %p
-    %b Start Date:
-    = @report.start_date
-  %p
-    %b End Date:
-    = @report.end_date
-  %p
-    %b Notes:
-    = @report.notes
-  %p
-    %b Logo Enabled:
-    = @report.logo_enabled
-  %p
-    %b Created At:
-    = @report.created_at
-  %p
-    %b Updated At:
-    = @report.updated_at
+  %table.table
+    %tbody
+      %tr
+        %td
+          %b Name:
+        %td= @report.name
+      %tr
+        %td
+          %b Report type:
+        %td= @report.report_type.name
+      %tr
+        %td
+          %b Report Type Options:
+        %td= @report&.report_type_options&.map(&:name).join(', ')
+      %tr
+        %td
+          %b Start Date:
+        %td= @report.start_date
+      %tr
+        %td
+          %b End Date:
+        %td= @report.end_date
+      %tr
+        %td
+          %b Notes:
+        %td= @report.notes
+      %tr
+        %td
+          %b Logo Enabled:
+        %td= @report.logo_enabled
+      %tr
+        %td
+          %b Created At:
+        %td= @report.created_at
+      %tr
+        %td
+          %b Updated At:
+        %td= @report.updated_at
