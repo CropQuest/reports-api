@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170911235633) do
+ActiveRecord::Schema.define(version: 20170924002447) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,15 @@ ActiveRecord::Schema.define(version: 20170911235633) do
     t.index ["uid"], name: "index_oauth_applications_on_uid", unique: true
   end
 
+  create_table "report_options", force: :cascade do |t|
+    t.bigint "report_type_option_id"
+    t.bigint "report_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["report_id"], name: "index_report_options_on_report_id"
+    t.index ["report_type_option_id"], name: "index_report_options_on_report_type_option_id"
+  end
+
   create_table "report_type_options", force: :cascade do |t|
     t.bigint "report_type_id"
     t.string "name"
@@ -73,7 +82,6 @@ ActiveRecord::Schema.define(version: 20170911235633) do
   create_table "reports", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "report_type_id"
-    t.integer "report_type_option_ids", default: [], array: true
     t.string "name"
     t.date "start_date"
     t.date "end_date"

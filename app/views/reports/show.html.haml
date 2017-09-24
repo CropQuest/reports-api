@@ -7,7 +7,7 @@
     = @report.report_type.name
   %p
     %b Report Type Options:
-    = @report.report_type_option_ids
+    = @report&.report_type_options&.map(&:name).join(', ')
   %p
     %b Name:
     = @report.name

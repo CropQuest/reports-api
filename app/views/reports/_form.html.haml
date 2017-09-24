@@ -3,7 +3,7 @@
 
   .form-inputs
     = f.association :report_type
-    = f.input :report_type_option_ids, label: 'Report Type Options'
+    = f.association :report_type_options
     = f.input :name
     = f.input :notes
     = f.input :start_date
