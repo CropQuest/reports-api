@@ -2,32 +2,28 @@
   %h2 Reports
   %hr
 
-  %table.table.table-striped
-    %thead.thead-inverse
+  %table.table.table-striped.table-responsive
+    %thead.thead-default
       %tr
-        %th Report Type
-        %th Report Type Options
         %th Name
-        %th Notes
-        %th Start Date
-        %th End Date
-        %th Logo
+        %th Type
+        %th Options
+        %th Start
+        %th End
         %th
 
     %tbody
       - @reports.each do |report|
         %tr
+          %td= report.name
           %td= report.report_type.name
           %td= report&.report_type_options&.map(&:name).join(', ')
-          %td= report.name
-          %td= report.notes
           %td= report.start_date
           %td= report.end_date
-          %td= report.logo_enabled
           %td
-            = link_to 'Show', report
-            = link_to 'Edit', edit_report_path(report)
-            = link_to 'Destroy', report, method: :delete, data: { confirm: 'Are you sure?' }
+            = link_to raw("#{icon('eye')}"), report, class: "btn btn-info"
+            = link_to raw("#{icon('pencil')}"), edit_report_path(report), class: "btn btn-warning"
+            = link_to raw("#{icon('trash')}"), report, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"
 
   %br
 

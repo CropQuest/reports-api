@@ -13,6 +13,7 @@ class ReportsController < ApplicationController
   # GET /reports/new
   def new
     @report = Report.new
+    @report.start_date = Date.today - 3.days
   end
 
   # GET /reports/1/edit

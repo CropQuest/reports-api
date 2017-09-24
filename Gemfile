@@ -29,6 +29,7 @@ gem 'active_model_serializers', '~> 0.10'
 gem 'haml-rails', '~> 1.0'
 gem 'jquery-rails'
 gem 'bootstrap', '~> 4.0.0.beta'
+gem 'font-awesome-sass', '~> 4.7'
 gem 'simple_form'
 
 # Authentication
