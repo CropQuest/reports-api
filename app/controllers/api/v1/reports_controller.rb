@@ -1,12 +1,29 @@
 class API::V1::ReportsController < API::APIController
   before_action :set_report, only: [:show, :update, :destroy]
 
+  swagger_controller :reports, "Report Management"
+
+  swagger_api :index do
+    summary "Fetches all Report items"
+    notes "This lists all the user's reports"
+    response :unauthorized
+    response :not_acceptable, "The request you made is not acceptable"
+    response :requested_range_not_satisfiable
+  end
   # GET /reports
   def index
     @reports = Report.all
     render json: @reports
   end
 
+  swagger_api :show do
+    summary "Fetches a single Report item"
+    param :path, :id, :integer, :optional, "Report Id"
+    response :ok, "Success", :User
+    response :unauthorized
+    response :not_acceptable
+    response :not_found
+  end
   # GET /reports/:id
   def show
     render json: @report

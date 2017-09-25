@@ -24,6 +24,8 @@ gem 'turbolinks', '~> 5'
 
 # JSON API
 gem 'active_model_serializers', '~> 0.10'
+gem 'doorkeeper'
+gem 'swagger-docs'
 
 # UI and Views
 gem 'haml-rails', '~> 1.0'

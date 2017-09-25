@@ -6,6 +6,7 @@ Rails 5 example app with a documented API. The primary goal is to keep this app 
 
 ## Overview
 * User authentication with [Devise](https://github.com/plataformatec/devise)
+* OAuth2 provider with [Doorkeeper](https://github.com/doorkeeper-gem/doorkeeper)
 * JSON API with [ActiveModelSerializers](https://github.com/rails-api/active_model_serializers)
 * API documentation with [Swagger](https://github.com/richhollis/swagger-docs)
 * [RSpec](http://rspec.info/) for testing
