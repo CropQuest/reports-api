@@ -34,7 +34,7 @@ class API::V1::ReportsController < API::APIController
 
   swagger_api :create do
     summary "Creates a new Report"
-    param :form, :report_type, :integer, :required, "Report Type id"
+    param :form, :report_type_id, :integer, :required, "Report Type id"
     param :form, :name, :string, :required, "Name"
     param :form, :start_date, :date, :required, "Start Date"
     param :form, :end_date, :date, :required, "End Date"
@@ -45,6 +45,7 @@ class API::V1::ReportsController < API::APIController
   # POST /reports
   def create
     @report = Report.new(report_params)
+    @reports.user_id = current_resource_owner.id
 
     if @report.save
       render json: @report, status: :created, location: @report
