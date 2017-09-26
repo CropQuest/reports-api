@@ -1,7 +1,5 @@
 # Reports API App
 
-*** Note: this is still a work in progress ***
-
 Rails 5 example app with a documented API. The primary goal is to keep this app up to date with new versions of Ruby on Rails and project dependencies as a reference implementation. The secondary goal is to provide a simple documented API for learning to implement mobile API clients.
 
 ## Overview
@@ -62,3 +60,5 @@ To generate swagger API documentation:
 ```bash
 bundle exec rake swagger:docs
 ```
+
+The docs are accessible at http://localhost:3000/apidocs
