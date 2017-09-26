@@ -40,7 +40,6 @@ task :deploy do
     invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
     invoke :'deploy:cleanup'
-    invoke :'rake[swagger:docs]'
 
     on :launch do
       in_path(fetch(:current_path)) do
