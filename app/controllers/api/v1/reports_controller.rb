@@ -34,11 +34,11 @@ class API::V1::ReportsController < API::APIController
 
   swagger_api :create do
     summary "Creates a new Report"
-    param :form, :report_type_id, :integer, :required, "Report Type id"
-    param :form, :name, :string, :required, "Name"
-    param :form, :start_date, :date, :required, "Start Date"
-    param :form, :end_date, :date, :required, "End Date"
-    param :form, :logo_enabled, :boolean, :required, "Logo Enabled"
+    param :form, "report[report_type_id]", :integer, :required, "Report Type id"
+    param :form, "report[name", :string, :required, "Name"
+    param :form, "report[start_date]", :date, :required, "Start Date"
+    param :form, "report[end_date]", :date, :required, "End Date"
+    param :form, "report[logo_enabled]", :boolean, :optional, "Logo Enabled"
     response :unauthorized
     response :not_acceptable
   end
@@ -57,11 +57,11 @@ class API::V1::ReportsController < API::APIController
   swagger_api :update do
     summary "Updates an existing Report"
     param :path, :id, :integer, :required, "Report id"
-    param :form, :report_type, :integer, :required, "Report Type id"
-    param :form, :name, :string, :required, "Name"
-    param :form, :start_date, :date, :required, "Start Date"
-    param :form, :end_date, :date, :required, "End Date"
-    param :form, :logo_enabled, :boolean, :required, "Logo Enabled"
+    param :form, "report[report_type_id]", :integer, :required, "Report Type id"
+    param :form, "report[name", :string, :required, "Name"
+    param :form, "report[start_date]", :date, :required, "Start Date"
+    param :form, "report[end_date]", :date, :required, "End Date"
+    param :form, "report[logo_enabled]", :boolean, :optional, "Logo Enabled"
     response :unauthorized
     response :not_acceptable
   end
