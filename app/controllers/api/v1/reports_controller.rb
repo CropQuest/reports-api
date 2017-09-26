@@ -45,7 +45,7 @@ class API::V1::ReportsController < API::APIController
   # POST /reports
   def create
     @report = Report.new(report_params)
-    @reports.user_id = current_resource_owner.id
+    @report.user_id = current_resource_owner.id
 
     if @report.save
       render json: @report, status: :created, location: @report
