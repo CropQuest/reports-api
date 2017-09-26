@@ -9,7 +9,6 @@
       %tr
         %th Name
         %th Type
-        %th Options
         %th Start
         %th End
         %th
@@ -19,7 +18,6 @@
         %tr
           %td= report.name
           %td= report.report_type.name
-          %td= report&.report_type_options&.map(&:name).join(', ')
           %td= report.start_date
           %td= report.end_date
           %td
