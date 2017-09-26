@@ -40,6 +40,9 @@ gem 'devise'
 # deployment
 gem 'mina'
 
+# errors
+gem 'honeybadger', '~> 3.1'
+
 group :development, :test do
   gem 'database_cleaner'
   gem 'rspec-rails'
