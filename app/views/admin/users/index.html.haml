@@ -1,0 +1,22 @@
+%div.col-md-12
+  %h3 Users
+  %br
+
+  %table.table.table-striped.table-responsive
+    %thead.thead-default
+      %tr
+        %th Email
+        %th Admin?
+        %th Signed Up
+        %th Last Login
+        %th
+
+    %tbody
+      - @users.each do |user|
+        %tr
+          %td= user.email
+          %td= (user.report_admin? ? icon('check') : icon('close'))
+          %td= user.created_at
+          %td= user.current_sign_in_at
+          %td
+            = link_to raw("#{icon('trash')}"), admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"

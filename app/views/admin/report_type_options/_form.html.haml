@@ -1,9 +1,0 @@
-= simple_form_for [:admin, @report_type_option] do |f|
-  = f.error_notification
-
-  .form-inputs
-    = f.association :report_type
-    = f.input :name
-
-  .form-actions
-    = f.button :submit

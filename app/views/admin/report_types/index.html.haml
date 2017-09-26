@@ -1,9 +1,11 @@
 %div.col-md-12
-  %h2 Report Types
-  %hr
+  .pull-right
+    = link_to raw("#{icon('plus', 'Add')}"), new_admin_report_type_path, class: "btn btn-primary"
+  %h3 Report Types
+  %br
 
-  %table.table.table-striped
-    %thead.thead-inverse
+  %table.table.table-striped.table-responsive
+    %thead.thead-default
       %tr
         %th Name
         %th Description
@@ -15,10 +17,6 @@
           %td= report_type.name
           %td= report_type.description
           %td
-            = link_to 'Show', admin_report_type_path(report_type)
-            = link_to 'Edit', edit_admin_report_type_path(report_type)
-            = link_to 'Destroy', admin_report_type_path(report_type), method: :delete, data: { confirm: 'Are you sure?' }
-
-  %br
-
-  = link_to 'New Report type', new_admin_report_type_path
+            = link_to raw("#{icon('eye')}"), admin_report_type_path(report_type), class: "btn btn-info"
+            = link_to raw("#{icon('pencil')}"), edit_admin_report_type_path(report_type), class: "btn btn-warning"
+            = link_to raw("#{icon('trash')}"), admin_report_type_path(report_type), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"

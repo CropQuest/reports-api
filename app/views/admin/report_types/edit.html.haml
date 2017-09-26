@@ -1,9 +1,8 @@
 %div.col-md-12
-  %h2 Edit Report Type
-  %hr
+  .pull-right
+    = link_to raw("#{icon('eye', 'View')}"), admin_report_type_path(@report_type), class: "btn btn-info"
+    = link_to raw("#{icon('arrow-left', 'Back')}"), admin_report_types_path, class: "btn btn-secondary"
+  %h3 Edit Report Type
+  %br
 
   = render 'form'
-
-  = link_to 'Show', admin_report_type_path(@report_type)
-  \|
-  = link_to 'Back', admin_report_types_path

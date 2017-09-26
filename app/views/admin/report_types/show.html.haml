@@ -1,16 +1,17 @@
 %div.col-md-12
-  %h2 Report Type
-  %hr
+  .pull-right
+    = link_to raw("#{icon('pencil', 'Edit')}"), edit_admin_report_type_path(@report_type), class: "btn btn-warning"
+    = link_to raw("#{icon('arrow-left', 'Back')}"), admin_report_types_path, class: "btn btn-secondary"
+  %h3 Report Type
+  %br
 
-  %p#notice= notice
-
-  %p
-    %b Name:
-    = @report_type.name
-  %p
-    %b Description:
-    = @report_type.description
-
-  = link_to 'Edit', edit_admin_report_type_path(@report_type)
-  \|
-  = link_to 'Back', admin_report_types_path
+  %table.table
+    %tbody
+      %tr
+        %td
+          %b Name:
+        %td= @report_type.name
+      %tr
+        %td
+          %b Description:
+        %td= @report_type.description

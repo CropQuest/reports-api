@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :report_type_options
     resources :report_types
+    resources :users
   end
 
   resources :reports
