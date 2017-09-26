@@ -28,11 +28,7 @@ class API::V1::ReportsController < API::APIController
   end
   # GET /reports/:id
   def show
-    if @report.present?
-      render json: @report
-    else
-      render json: { message: "Report not found!" }
-    end
+    render json: @report
   end
 
 
