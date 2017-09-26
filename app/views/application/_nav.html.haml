@@ -7,6 +7,9 @@
       %li.nav-item.active
         = link_to "Home", root_url, class: "nav-link"
         %span.sr-only (current)
+      - if user_signed_in?
+        %li.nav-item
+          = link_to "API Docs", apidocs_url, class: "nav-link"
       %li.nav-item.dropdown.ml-auto
         - if user_signed_in?
           %a#navbarDropdownMenuLink.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#"}
