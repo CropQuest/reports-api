@@ -1,5 +1,6 @@
 class ReportsController < ApplicationController
   before_action :set_report, only: [:show, :edit, :update, :destroy]
+  before_action :require_permission, only: [:show, :edit, :update, :destroy]
 
   # GET /reports
   def index
@@ -52,8 +53,14 @@ class ReportsController < ApplicationController
       @report = Report.find(params[:id])
     end
 
+    def require_permission
+      if @report.user_id != current_user.id
+        redirect_to root_url
+      end
+    end
+
     # Only allow a trusted parameter "white list" through.
     def report_params
-      params.require(:report).permit(:report_type_id, :name, :start_date, :end_date, :notes, :logo_enabled, report_type_option_ids: [])
+      params.require(:report).permit(:report_type_id, :name, :start_date, :end_date, :notes, :logo_enabled)
     end
 end

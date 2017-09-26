@@ -1,5 +1,6 @@
 class API::V1::ReportsController < API::APIController
   before_action :set_report, only: [:show, :update, :destroy]
+  before_action :require_permission, only: [:show, :edit, :update, :destroy]
 
   swagger_controller :reports, "Report"
 
@@ -13,7 +14,7 @@ class API::V1::ReportsController < API::APIController
   end
   # GET /reports
   def index
-    @reports = Report.all
+    @reports = current_resource_owner.reports
     render json: @reports
   end
 
@@ -27,7 +28,11 @@ class API::V1::ReportsController < API::APIController
   end
   # GET /reports/:id
   def show
-    render json: @report
+    if @report.present?
+      render json: @report
+    else
+      render json: { message: "Report not found!" }
+    end
   end
 
 
@@ -46,9 +51,9 @@ class API::V1::ReportsController < API::APIController
     @report = Report.new(report_params)
 
     if @report.save
-      redirect_to @report, notice: 'Report was successfully created.'
+      render json: @report, status: :created, location: @report
     else
-      render :new
+      render json: @report.errors, status: :unprocessable_entity
     end
   end
 
@@ -66,9 +71,9 @@ class API::V1::ReportsController < API::APIController
   # PATCH/PUT /reports/:id
   def update
     if @report.update(report_params)
-      redirect_to @report, notice: 'Report was successfully updated.'
+      render json: @report
     else
-      render :edit
+      render json: @report.errors, status: :unprocessable_entity
     end
   end
 
@@ -81,13 +86,18 @@ class API::V1::ReportsController < API::APIController
   # DELETE /reports/:id
   def destroy
     @report.destroy
-    redirect_to reports_url, notice: 'Report was successfully destroyed.'
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_report
       @report = Report.find(params[:id])
+    end
+
+    def require_permission
+      if current_resource_owner.nil? || @report.user_id != current_resource_owner.id
+        render json: { message: "Not authorized." }, status: :unauthorized
+      end
     end
 
     # Only allow a trusted parameter "white list" through.

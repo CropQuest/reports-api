@@ -6,10 +6,6 @@ class API::APIController < ActionController::Base
   respond_to :json
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
 
-  def current_resource_owner
-    User.find(doorkeeper_token.resource_owner_id) if doorkeeper_token
-  end
-
   def doorkeeper_unauthorized_render_options(error:)
     {:json => {:error => "Not authorized"}}
   end
