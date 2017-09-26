@@ -37,6 +37,9 @@ gem 'simple_form'
 # Authentication
 gem 'devise'
 
+# deployment
+gem 'mina'
+
 group :development, :test do
   gem 'database_cleaner'
   gem 'rspec-rails'
