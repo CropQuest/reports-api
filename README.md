@@ -51,3 +51,14 @@ bundle exec rspec
 ```
 
 ### API
+
+OAuth application credentials can be setup by admin user at
+http://localhost:3000/oauth/applications
+
+#### API docs
+
+To generate swagger API documentation:
+
+```bash
+bundle exec rake swagger:docs
+```

@@ -1,24 +1,21 @@
+class Swagger::Docs::Config
+  def self.transform_path(path, api_version)
+    # Make a distinction between the APIs and API documentation paths.
+    "apidocs/#{path}"
+  end
+end
+
 Swagger::Docs::Config.register_apis({
-  "1.0" => {
-    # the extension used for the API
+  '1.0' => {
     :api_extension_type => :json,
-    # the output location where your .json files are written to
-    :api_file_path => "public/api/v1/",
-    # the URL base path to your API
-    :base_path => "http://reports.example.com",
-    # if you want to delete all .json files at each generation
-    :clean_directory => false,
-    # Ability to setup base controller for each api version. Api::V1::SomeController for example.
-    :parent_controller => API::APIController,
+    :api_file_path => 'public/apidocs',
+    :base_path => 'http://localhost:3000',
+    :clean_directory => true,
     # add custom attributes to api-docs
     :attributes => {
       :info => {
         "title" => "Reports App",
-        "description" => "This is a sample Reports API.",
-        "termsOfServiceUrl" => "http://reports.example.com/terms/",
-        "contact" => "apiteam@wordnik.com",
-        "license" => "Apache 2.0",
-        "licenseUrl" => "http://www.apache.org/licenses/LICENSE-2.0.html"
+        "description" => "This is a sample Reports App with an API."
       }
     }
   }

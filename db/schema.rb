@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170924002447) do
+ActiveRecord::Schema.define(version: 20170926123521) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,23 +53,6 @@ ActiveRecord::Schema.define(version: 20170924002447) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["uid"], name: "index_oauth_applications_on_uid", unique: true
-  end
-
-  create_table "report_options", force: :cascade do |t|
-    t.bigint "report_type_option_id"
-    t.bigint "report_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["report_id"], name: "index_report_options_on_report_id"
-    t.index ["report_type_option_id"], name: "index_report_options_on_report_type_option_id"
-  end
-
-  create_table "report_type_options", force: :cascade do |t|
-    t.bigint "report_type_id"
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["report_type_id"], name: "index_report_type_options_on_report_type_id"
   end
 
   create_table "report_types", force: :cascade do |t|
@@ -115,7 +98,6 @@ ActiveRecord::Schema.define(version: 20170924002447) do
   add_foreign_key "oauth_access_grants", "users", column: "resource_owner_id"
   add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"
   add_foreign_key "oauth_access_tokens", "users", column: "resource_owner_id"
-  add_foreign_key "report_type_options", "report_types"
   add_foreign_key "reports", "report_types"
   add_foreign_key "reports", "users"
 end

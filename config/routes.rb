@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get '/apidocs' => redirect('/swagger/index.html?url=/apidocs/api-docs.json')
+
   namespace :api do
     namespace :v1, defaults: { format: 'json' } do
       resources :reports

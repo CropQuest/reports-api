@@ -2,7 +2,6 @@ FactoryGirl.define do
   factory :report do
     association :user
     association :report_type
-    report_type_option_ids [1, 2]
     name { Faker::Job.title }
     start_date Faker::Date.between(20.days.ago, 10.days.ago)
     end_date Faker::Date.between(3.days.ago, Date.today)
