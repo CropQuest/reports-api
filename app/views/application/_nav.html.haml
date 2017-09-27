@@ -13,9 +13,9 @@
             = icon("lock")
             Admin
           .dropdown-menu.dropdown-menu-right{"aria-labelledby" => "navbarDropdownMenuLink"}
-            = link_to "Report Types", admin_report_types_path, class: "navbar-brand", class: "dropdown-item"
-            = link_to "Users", admin_users_path, class: "navbar-brand", class: "dropdown-item"
-            = link_to "OAuth Apps", oauth_applications_path, class: "navbar-brand", class: "dropdown-item"
+            = link_to "Report Types", admin_report_types_path, class: "dropdown-item"
+            = link_to "Users", admin_users_path, class: "dropdown-item"
+            = link_to "OAuth Apps", oauth_applications_path, class: "dropdown-item"
       - if user_signed_in?
         %li.nav-item
           = link_to raw("#{icon('book', 'API Docs')}"), apidocs_url, class: "nav-link"
