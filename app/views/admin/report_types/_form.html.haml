@@ -1,5 +1,8 @@
 = simple_form_for [:admin, @report_type] do |f|
-  = f.error_notification
+  - if @report_type.errors.any?
+    - for message in @report_type.errors.full_messages
+      %div.alert.alert-danger{:role => "alert"}
+        = message
 
   .form-inputs
     = f.input :name
