@@ -8,9 +8,7 @@
         %th Email
         %th Admin?
         %th Reports
-        %th Signed Up
         %th Last Login
-        %th IP
         %th
 
     %tbody
@@ -19,8 +17,8 @@
           %td= user.email
           %td= (user.report_admin? ? icon('check') : icon('close'))
           %td= user.reports.count
-          %td= user.created_at
           %td= user.current_sign_in_at
-          %td= user.current_sign_in_ip
           %td
+            = link_to raw("#{icon('eye')}"), admin_user_path(user), class: "btn btn-info"
+            = link_to raw("#{icon('pencil')}"), edit_admin_user_path(user), class: "btn btn-warning"
             = link_to raw("#{icon('trash')}"), admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"

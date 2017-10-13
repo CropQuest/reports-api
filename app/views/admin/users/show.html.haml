@@ -1,0 +1,45 @@
+%div.col-md-12
+  .pull-right
+    = link_to raw("#{icon('pencil', 'Edit')}"), edit_admin_user_path(@user), class: "btn btn-warning"
+    = link_to raw("#{icon('arrow-left', 'Back')}"), admin_users_path, class: "btn btn-secondary"
+  %h3 User
+  %br
+
+  %table.table
+    %tbody
+      %tr
+        %td
+          %b Email:
+        %td= @user.email
+      %tr
+        %td
+          %b First Name:
+        %td= @user.first_name
+      %tr
+        %td
+          %b Last Name:
+        %td= @user.last_name
+      %tr
+        %td
+          %b City:
+        %td= @user.city
+      %tr
+        %td
+          %b Region:
+        %td= @user.region
+      %tr
+        %td
+          %b Country:
+        %td= @user.country
+      %tr
+        %td
+          %b Signed Up:
+        %td= @user.created_at
+      %tr
+        %td
+          %b Last Login:
+        %td= @user.current_sign_in_at
+      %tr
+        %td
+          %b IP Address:
+        %td= @user.current_sign_in_ip

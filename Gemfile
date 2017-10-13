@@ -33,6 +33,7 @@ gem 'jquery-rails'
 gem 'bootstrap', '~> 4.0.0.beta'
 gem 'font-awesome-sass', '~> 4.7'
 gem 'simple_form'
+gem 'country_select'
 
 # Authentication
 gem 'devise'

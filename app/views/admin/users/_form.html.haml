@@ -1,0 +1,16 @@
+= simple_form_for [:admin, @user] do |f|
+  - if @user.errors.any?
+    - for message in @user.errors.full_messages
+      %div.alert.alert-danger{:role => "alert"}
+        = message
+
+  .form-inputs
+    = f.input :email, required: true, autofocus: true
+    = f.input :first_name, required: true
+    = f.input :last_name, required: true
+    = f.input :city, required: true
+    = f.input :region, required: true
+    = f.input :country, priority: ["US"], required: true
+
+  .form-actions
+    = f.button :submit
