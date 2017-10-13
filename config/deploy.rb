@@ -4,7 +4,7 @@ require 'mina/rbenv'
 
 set :domain, 'reports.cropquest.net'
 set :deploy_to, '/home/deploy/reports-api'
-set :repository, 'git@github.com:beaorn/reports-api.git'
+set :repository, 'git@github.com:CropQuest/reports-api.git'
 set :branch, 'master'
 set :user, 'deploy'
 set :port, '2012'
