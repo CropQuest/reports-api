@@ -9,7 +9,7 @@ Swagger::Docs::Config.register_apis({
   '1.0' => {
     :api_extension_type => :json,
     :api_file_path => 'public/apidocs',
-    :base_path => 'https://reports.cropquest.net',
+    :base_path => Rails.application.secrets.api_url,
     :clean_directory => true,
     # add custom attributes to api-docs
     :attributes => {

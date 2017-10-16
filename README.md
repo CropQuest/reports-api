@@ -58,6 +58,7 @@ http://localhost:3000/oauth/applications
 To generate swagger API documentation:
 
 ```bash
+rm -rf public/apidocs # if exists
 bundle exec rake swagger:docs
 ```
 
